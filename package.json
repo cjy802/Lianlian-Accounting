@@ -1,21 +1,13 @@
 {
-  "name": "miniprogram-demo",
+  "name": "lianlian-miniapp",
   "version": "1.0.0",
-  "description": "WeChat miniprogram demo",
+  "description": "廉廉记账 - 个人账单智能管理微信小程序",
   "scripts": {
     "lint": "eslint ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wechat-miniprogram/miniprogram-demo.git"
-  },
-  "author": "wechat-miniprogram",
+  "author": "",
   "license": "MIT",
   "private": true,
-  "bugs": {
-    "url": "https://github.com/wechat-miniprogram/miniprogram-demo/issues"
-  },
-  "homepage": "https://github.com/wechat-miniprogram/miniprogram-demo#readme",
   "devDependencies": {
     "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "13.1.0",
