@@ -1,0 +1,54 @@
+<view class="consult-page" wx:if="{{session}}">
+  <view class="consult-header">
+    <view class="consult-title">AI 咨询</view>
+    <view class="consult-back" bindtap="goBackHome">返回首页</view>
+  </view>
+
+  <scroll-view
+    class="consult-messages"
+    scroll-y
+    enhanced
+    show-scrollbar="{{false}}"
+    scroll-with-animation
+    scroll-into-view="{{scrollToId}}"
+  >
+    <view
+      class="consult-message {{item.role === 'user' ? 'consult-message-user' : 'consult-message-ai'}}"
+      wx:for="{{messages}}"
+      wx:key="id"
+      id="{{item.id}}"
+    >
+      <view class="consult-bubble">
+        <text>{{item.content}}</text>
+        <text class="consult-stream-cursor" wx:if="{{streamingMessageId === item.id}}">▍</text>
+      </view>
+    </view>
+
+    <view class="consult-loading" wx:if="{{loading}}">
+      <view class="consult-loading-text">
+        {{streamingMessageId ? 'AI 正在生成回答...' : 'AI 正在整理答案...'}}
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="consult-input-bar">
+    <view class="consult-input-shell">
+      <textarea
+        class="consult-input"
+        value="{{inputText}}"
+        bindinput="handleInput"
+        placeholder="输入你想查询的账单问题"
+        maxlength="-1"
+        auto-height
+        confirm-type="send"
+        adjust-position
+      />
+      <view
+        class="consult-send-btn {{loading ? 'consult-send-btn-disabled' : ''}}"
+        bindtap="submitConsult"
+      >
+        <text class="consult-send-icon">➤</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,61 @@
+<view class="app-shell" wx:if="{{analytics}}">
+  <view class="hero">
+    <view class="eyebrow">ANALYTICS</view>
+    <view class="hero-title">消费结构一眼看懂</view>
+    <view class="hero-subtitle">
+      当前可统计金额 {{analytics.totalAmountText}}，用于展示分类分布、趋势和风险账单占比。
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">分类占比</view>
+      <view class="section-desc">按 AI / 手工分类汇总</view>
+    </view>
+    <view class="paper-card bar-list">
+      <view wx:for="{{analytics.categoryBreakdown}}" wx:key="code">
+        <view class="table-row">
+          <view class="table-main">
+            <view class="table-title">{{item.label}}</view>
+            <view class="table-subtitle">{{item.amountText}}</view>
+          </view>
+          <view class="table-value">{{item.ratio}}%</view>
+        </view>
+        <view class="bar-track">
+          <view class="bar-fill" style="width: {{item.ratio}}%;"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">金额趋势</view>
+      <view class="section-desc">最近账单金额走势</view>
+    </view>
+    <view class="paper-card">
+      <view class="trend-chart">
+        <view class="trend-column" wx:for="{{analytics.trend}}" wx:key="label">
+          <view class="trend-bar" style="height: {{item.height}}rpx;"></view>
+          <view class="trend-label">{{item.label}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">商家排行</view>
+      <view class="section-desc">高频消费商家</view>
+    </view>
+    <view class="paper-card">
+      <view class="table-row" wx:for="{{analytics.merchantRanking}}" wx:key="merchantName">
+        <view class="table-main">
+          <view class="table-title">{{item.merchantName}}</view>
+          <view class="table-subtitle">占比 {{item.ratio}}%</view>
+        </view>
+        <view class="table-value">{{item.amountText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

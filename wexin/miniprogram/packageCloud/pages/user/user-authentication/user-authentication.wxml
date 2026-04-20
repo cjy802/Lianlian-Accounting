@@ -1,0 +1,95 @@
+<view class="auth-page">
+  <view class="auth-hero">
+    <view class="hero-badge">SMART BILL ASSISTANT</view>
+    <view class="hero-title-custom">廉廉记账</view>
+    <view class="hero-subtitle-custom">以透明记账、预算约束和收支留痕为核心，帮助用户规范每一笔开销，让账目清晰可查、消费节制有度，体现诚实守信、勤俭自律的廉洁理念。</view>
+    <view class="hero-title">欢迎使用</view>
+    <view class="hero-subtitle">推荐直接使用微信授权登录，系统会读取当前微信身份并优先使用你的微信昵称作为显示名称。</view>
+  </view>
+
+  <view class="auth-card">
+    <view class="mode-switch">
+      <view class="mode-item {{mode === 'login' ? 'mode-item-active' : ''}}" data-mode="login" bindtap="switchMode">登录</view>
+      <view class="mode-item {{mode === 'register' ? 'mode-item-active' : ''}}" data-mode="register" bindtap="switchMode">注册</view>
+    </view>
+
+    <view class="card-title">{{mode === 'login' ? '欢迎登录' : '创建账号'}}</view>
+    <view class="card-subtitle">{{mode === 'login' ? '你可以使用账号密码登录，也可以直接微信授权登录' : '支持账号注册，也支持直接用微信完成注册'}}</view>
+
+    <view wx:if="{{mode === 'register'}}" class="field-group">
+      <view class="field-label">昵称</view>
+      <input
+        class="field-input"
+        value="{{nickname}}"
+        placeholder="请输入昵称"
+        bindinput="handleInput"
+        data-field="nickname"
+      />
+    </view>
+
+    <view class="field-group">
+      <view class="field-label">账号</view>
+      <input
+        class="field-input"
+        value="{{account}}"
+        placeholder="{{mode === 'login' ? '请输入账号' : '请输入注册账号'}}"
+        bindinput="handleInput"
+        data-field="account"
+      />
+    </view>
+
+    <view class="field-group">
+      <view class="field-label">密码</view>
+      <input
+        class="field-input"
+        value="{{password}}"
+        placeholder="{{mode === 'login' ? '请输入密码' : '请输入至少 6 位密码'}}"
+        password
+        bindinput="handleInput"
+        data-field="password"
+      />
+    </view>
+
+    <view wx:if="{{mode === 'register'}}" class="field-group">
+      <view class="field-label">确认密码</view>
+      <input
+        class="field-input"
+        value="{{confirmPassword}}"
+        placeholder="请再次输入密码"
+        password
+        bindinput="handleInput"
+        data-field="confirmPassword"
+      />
+    </view>
+
+    <view class="action-button-row">
+      <button class="primary-button action-half" loading="{{loading}}" bindtap="handleAccountSubmit">
+        {{mode === 'login' ? '账号密码登录' : '账号注册'}}
+      </button>
+
+      <button class="wechat-button action-half" loading="{{wechatLoading}}" bindtap="handleWechatSubmit">
+        {{mode === 'login' ? '微信授权登录' : '微信授权注册'}}
+      </button>
+    </view>
+
+    <view class="action-row" wx:if="{{mode === 'login'}}">
+      <text class="action-link" data-mode="register" bindtap="switchMode">注册账号</text>
+      <text class="action-link" bindtap="handleForgotPassword">忘记密码</text>
+    </view>
+
+    <view class="action-row" wx:if="{{mode === 'register'}}">
+      <text class="action-link" data-mode="login" bindtap="switchMode">返回登录</text>
+      <text class="action-hint">注册成功后可直接使用账号密码登录</text>
+    </view>
+
+    <view class="tips-box">
+      <view class="tips-title">说明</view>
+      <view wx:for="{{authTips}}" wx:key="*this" class="tips-item">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="auth-footer">
+    <view class="auth-footer-line">软件与大数据学院</view>
+    <view class="auth-footer-line auth-footer-name">软件精英258 陈佳一</view>
+  </view>
+</view>

@@ -1,0 +1,54 @@
+<view class="app-shell" wx:if="{{detail}}">
+  <view class="hero">
+    <view class="eyebrow">BILL DETAIL</view>
+    <view class="hero-title">{{detail.bill.merchant_name}}</view>
+    <view class="hero-subtitle">
+      {{detail.bill.bill_date}} · {{detail.bill.categoryText}} · {{detail.bill.riskText}} · {{detail.bill.reviewText}}
+    </view>
+    <view class="hero-actions">
+      <button class="button-primary" bindtap="openReview">查看 AI 审查</button>
+    </view>
+  </view>
+
+  <view class="section field-stack">
+    <view class="field-card">
+      <view class="field-label">实付金额</view>
+      <view class="field-value amount-text">{{detail.bill.amountText}}</view>
+    </view>
+    <view class="field-card">
+      <view class="field-label">用户备注</view>
+      <view class="field-value">{{detail.bill.remark || '暂无备注'}}</view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-header">
+      <view class="section-title">消费明细</view>
+      <view class="section-desc">{{detail.items.length}} 条</view>
+    </view>
+    <view class="paper-card">
+      <view class="table-row" wx:for="{{detail.items}}" wx:key="_id">
+        <view class="table-main">
+          <view class="table-title">{{item.item_name}}</view>
+          <view class="table-subtitle">数量 {{item.quantity}} · 单价 {{item.unit_price}}</view>
+        </view>
+        <view class="table-value">{{item.subtotalText}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section" wx:if="{{detail.attachments.length}}">
+    <view class="section-header">
+      <view class="section-title">附件信息</view>
+      <view class="section-desc">{{detail.attachments.length}} 个</view>
+    </view>
+    <view class="paper-card">
+      <view class="table-row" wx:for="{{detail.attachments}}" wx:key="_id">
+        <view class="table-main">
+          <view class="table-title">{{item.file_name}}</view>
+          <view class="table-subtitle">{{item.file_type}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

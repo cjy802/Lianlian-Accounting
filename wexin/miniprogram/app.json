@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "packageCloud/pages/user/user-authentication/user-authentication",
+    "packageCloud/pages/user/forgot-password/forgot-password",
+    "page/component/index",
+    "packageCloud/pages/storage/upload-file/upload-file",
+    "packageExtend/pages/search/searchbar/searchbar",
+    "packageExtend/pages/extend/tabs/tabs",
+    "packageExtend/pages/base/article/article",
+    "packageExtend/pages/form/form/form",
+    "packageExtend/pages/operate/msg/msg"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F5F7FA",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "廉链",
+    "backgroundColor": "#F5F7FA",
+    "backgroundTextStyle": "light"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
