@@ -90,7 +90,8 @@ npm run lint
 - 页面结构设计（15 个页面）
 - JSON 数据库设计（9 张表）
 - 技术架构建议
-
+## 二维码
+<img width="430" height="430" alt="download" src="https://github.com/user-attachments/assets/17e56c38-a96b-4233-8210-d19077d1cf95" />
 ## 许可证
 
 [MIT](./LICENSE)
